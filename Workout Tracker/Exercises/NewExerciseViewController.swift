@@ -1,5 +1,5 @@
 //
-//  ExerciseTableViewController.swift
+//  NewExerciseViewController.swift
 //  Workout Tracker
 //
 //  Created by Cory Eighan on 6/26/16.
@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class ExerciseTableViewController: UITableViewController {
+class NewExerciseViewController: UIViewController {
 
 }
