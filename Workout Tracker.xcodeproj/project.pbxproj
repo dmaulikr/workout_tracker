@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2C4C40921D2086BA00B118FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40911D2086BA00B118FA /* AppDelegate.swift */; };
-		2C4C40941D2086BA00B118FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40931D2086BA00B118FA /* ViewController.swift */; };
 		2C4C40971D2086BA00B118FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4C40951D2086BA00B118FA /* Main.storyboard */; };
 		2C4C409A1D2086BA00B118FA /* Workout_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40981D2086BA00B118FA /* Workout_Tracker.xcdatamodeld */; };
 		2C4C409C1D2086BA00B118FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4C409B1D2086BA00B118FA /* Assets.xcassets */; };
 		2C4C409F1D2086BA00B118FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4C409D1D2086BA00B118FA /* LaunchScreen.storyboard */; };
 		2C4C40AA1D2086BA00B118FA /* Workout_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40A91D2086BA00B118FA /* Workout_TrackerTests.swift */; };
 		2C4C40B51D2086BA00B118FA /* Workout_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40B41D2086BA00B118FA /* Workout_TrackerUITests.swift */; };
+		2C4C40C61D2089BB00B118FA /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40C51D2089BB00B118FA /* ExerciseViewController.swift */; };
+		2C4C40CA1D2098BD00B118FA /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40C91D2098BD00B118FA /* ExerciseTableViewController.swift */; };
+		2C4C40CC1D209DDD00B118FA /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C40CB1D209DDD00B118FA /* NewExerciseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		2C4C408E1D2086BA00B118FA /* Workout Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4C40911D2086BA00B118FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C4C40931D2086BA00B118FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2C4C40961D2086BA00B118FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C4C40991D2086BA00B118FA /* Workout_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workout_Tracker.xcdatamodel; sourceTree = "<group>"; };
 		2C4C409B1D2086BA00B118FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		2C4C40B01D2086BA00B118FA /* Workout TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Workout TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4C40B41D2086BA00B118FA /* Workout_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerUITests.swift; sourceTree = "<group>"; };
 		2C4C40B61D2086BA00B118FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C4C40C51D2089BB00B118FA /* ExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExerciseViewController.swift; path = Exercises/ExerciseViewController.swift; sourceTree = "<group>"; };
+		2C4C40C91D2098BD00B118FA /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExerciseTableViewController.swift; path = Exercises/ExerciseTableViewController.swift; sourceTree = "<group>"; };
+		2C4C40CB1D209DDD00B118FA /* NewExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewExerciseViewController.swift; path = Exercises/NewExerciseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,10 @@
 		2C4C40901D2086BA00B118FA /* Workout Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				2C4C40C41D2089B000B118FA /* Wod */,
+				2C4C40C31D2089AB00B118FA /* Dashboard */,
+				2C4C40C21D2089A300B118FA /* Exercises */,
 				2C4C40911D2086BA00B118FA /* AppDelegate.swift */,
-				2C4C40931D2086BA00B118FA /* ViewController.swift */,
 				2C4C40951D2086BA00B118FA /* Main.storyboard */,
 				2C4C409B1D2086BA00B118FA /* Assets.xcassets */,
 				2C4C409D1D2086BA00B118FA /* LaunchScreen.storyboard */,
@@ -126,6 +132,30 @@
 				2C4C40B61D2086BA00B118FA /* Info.plist */,
 			);
 			path = "Workout TrackerUITests";
+			sourceTree = "<group>";
+		};
+		2C4C40C21D2089A300B118FA /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C40C51D2089BB00B118FA /* ExerciseViewController.swift */,
+				2C4C40C91D2098BD00B118FA /* ExerciseTableViewController.swift */,
+				2C4C40CB1D209DDD00B118FA /* NewExerciseViewController.swift */,
+			);
+			name = Exercises;
+			sourceTree = "<group>";
+		};
+		2C4C40C31D2089AB00B118FA /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		2C4C40C41D2089B000B118FA /* Wod */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Wod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +290,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4C409A1D2086BA00B118FA /* Workout_Tracker.xcdatamodeld in Sources */,
-				2C4C40941D2086BA00B118FA /* ViewController.swift in Sources */,
+				2C4C40CA1D2098BD00B118FA /* ExerciseTableViewController.swift in Sources */,
+				2C4C40C61D2089BB00B118FA /* ExerciseViewController.swift in Sources */,
+				2C4C40CC1D209DDD00B118FA /* NewExerciseViewController.swift in Sources */,
 				2C4C40921D2086BA00B118FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
