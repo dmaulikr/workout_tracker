@@ -7,16 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class ExerciseTableViewController: UITableViewController {
     
-    var exercise = [String]()
-    var newExercise: String = ""
+    var exercises = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        exercise = ["Incline Bench Press","Pull ups","Bicep curls"]
+//        exercise = ["Incline Bench Press","Pull ups","Bicep curls"]
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -26,7 +26,7 @@ class ExerciseTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return exercise.count
+        return exercises.count
         
     }
     
@@ -35,7 +35,11 @@ class ExerciseTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("exerciseCell", forIndexPath: indexPath)
         
-        cell.textLabel!.text = exercise[indexPath.row]
+        let singleExercise = exercises[indexPath.row]
+        
+        cell.textLabel!.text =
+            singleExercise.valueForKey("name") as? String
+        
         return cell
     }
 
