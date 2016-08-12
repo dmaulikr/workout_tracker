@@ -13,10 +13,24 @@ class ExerciseTableViewController: UITableViewController {
     
     var exercises = [NSManagedObject]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-//        exercise = ["Incline Bench Press","Pull ups","Bicep curls"]
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Exercise")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            exercises = results as! [NSManagedObject]
+            self.tableView.reloadData()
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -25,9 +39,8 @@ class ExerciseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         return exercises.count
-        
     }
     
     
@@ -42,5 +55,5 @@ class ExerciseTableViewController: UITableViewController {
         
         return cell
     }
-
+    
 }

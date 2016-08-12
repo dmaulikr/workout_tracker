@@ -10,18 +10,6 @@ import UIKit
 
 class ExerciseViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func unwindToExerciseView(segue: UIStoryboardSegue) {
-    
-    }
+    @IBAction func unwindToExerciseView(segue: UIStoryboardSegue) {}
 }
 

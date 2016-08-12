@@ -13,13 +13,9 @@ class NewExerciseViewController: UIViewController {
 
     var exercises = [NSManagedObject]()
     
-    @IBOutlet weak var exerciseName: UITextField!
-    @IBOutlet weak var exerciseDetails: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+    @IBOutlet var exerciseName: UITextField!
+    @IBOutlet var exerciseDetails: UITextField!
+
     
     @IBAction func createNewExercise(sender: UIButton) {
 //        if (exerciseName.text!.isEmpty || exerciseDetails.text!.isEmpty) {
