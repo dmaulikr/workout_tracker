@@ -15,7 +15,7 @@ class ExerciseTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.retrieveTableData()
+        self.fetchExerciseData()
         self.tableView.reloadData()
         
     }
@@ -43,10 +43,9 @@ class ExerciseTableViewController: UITableViewController {
         return cell
     }
     
-    private func retrieveTableData() {
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
+    private func fetchExerciseData() {
         
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Exercise")

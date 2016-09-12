@@ -10,38 +10,59 @@ import UIKit
 import CoreData
 
 class NewExerciseViewController: UIViewController {
-
-    var exercises = [NSManagedObject]()
     
-    @IBOutlet var exerciseName: UITextField!
-    @IBOutlet var exerciseDetails: UITextField!
+    @IBOutlet weak var exerciseName: UITextField!
+    @IBOutlet weak var exerciseDetails: UITextField!
+    lazy var errMessage = ""
 
     
     @IBAction func createNewExercise(sender: UIButton) {
-//        if (exerciseName.text!.isEmpty || exerciseDetails.text!.isEmpty) {
-//            
-//            
-//        }
-//        else {
-//        
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let manageContext = appDelegate.managedObjectContext
+        if (exerciseName.text!.isEmpty || exerciseDetails.text!.isEmpty) {
+            
+            errMessage = "Please fill in all text fields!"
+            errorAlertMessage(errMessage)
+            
+        }
+        else {
+            saveExerciseObject()
+        }
+    }
+    
+    private func errorAlertMessage(errorDescription: String) {
         
-            let entity = NSEntityDescription.entityForName("Exercise", inManagedObjectContext: manageContext)
-            let singleExercise = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: manageContext)
+        let alertController = UIAlertController(title: "Error", message:
+            errorDescription, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         
-            singleExercise.setValue(exerciseName.text!, forKey: "name")
-            singleExercise.setValue(exerciseDetails.text!, forKey: "details")
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    private func saveExerciseObject() {
         
-            do {
-                try manageContext.save()
-
-                exercises.append(singleExercise)
-                self.performSegueWithIdentifier("unwindToExerciseView", sender: self)
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
-//        }
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manageContext = appDelegate.managedObjectContext
+        
+        // Create Entity
+        let entity = NSEntityDescription.entityForName("Exercise", inManagedObjectContext: manageContext)
+        let singleExercise = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: manageContext)
+        
+        setExerciseProperties(singleExercise)
+        
+        do {
+            try manageContext.save()
+            
+            self.performSegueWithIdentifier("unwindToExerciseView", sender: self)
+        } catch let error as NSError  {
+            errMessage = "Could not save \(error), \(error.userInfo)"
+            print(errMessage)
+            errorAlertMessage(errMessage)
+        }
+    }
+    
+    private func setExerciseProperties(singleExercise: NSManagedObject) {
+        
+        singleExercise.setValue(exerciseName.text!, forKey: "name")
+        singleExercise.setValue(exerciseDetails.text!, forKey: "details")
     }
     
 }
