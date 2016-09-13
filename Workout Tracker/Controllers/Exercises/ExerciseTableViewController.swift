@@ -11,11 +11,12 @@ import CoreData
 
 class ExerciseTableViewController: UITableViewController {
     
-    var exercises = [NSManagedObject]()
+    private var exercises = [Exercise]()
+    let reuseIdentifierCell = "exerciseCell"
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.fetchExerciseData()
+        fetchExerciseEntity()
         self.tableView.reloadData()
         
     }
@@ -33,17 +34,18 @@ class ExerciseTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("exerciseCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifierCell, forIndexPath: indexPath)
         
         let singleExercise = exercises[indexPath.row]
         
-        cell.textLabel!.text =
-            singleExercise.valueForKey("name") as? String
+        if let name = singleExercise.name {
+            cell.textLabel!.text = name
+        }
         
         return cell
     }
     
-    private func fetchExerciseData() {
+    private func fetchExerciseEntity() {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -52,7 +54,7 @@ class ExerciseTableViewController: UITableViewController {
         
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
-            exercises = results as! [NSManagedObject]
+            exercises = results as! [Exercise]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }

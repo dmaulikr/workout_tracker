@@ -21,20 +21,10 @@ class NewExerciseViewController: UIViewController {
             
             errMessage = "Please fill in all text fields!"
             errorAlertMessage(errMessage)
-            
         }
         else {
             saveExerciseObject()
         }
-    }
-    
-    private func errorAlertMessage(errorDescription: String) {
-        
-        let alertController = UIAlertController(title: "Error", message:
-            errorDescription, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     private func saveExerciseObject() {
@@ -44,7 +34,7 @@ class NewExerciseViewController: UIViewController {
         
         // Create Entity
         let entity = NSEntityDescription.entityForName("Exercise", inManagedObjectContext: manageContext)
-        let singleExercise = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: manageContext)
+        let singleExercise = Exercise(entity: entity!, insertIntoManagedObjectContext: manageContext)
         
         setExerciseProperties(singleExercise)
         
@@ -59,10 +49,19 @@ class NewExerciseViewController: UIViewController {
         }
     }
     
-    private func setExerciseProperties(singleExercise: NSManagedObject) {
+    private func setExerciseProperties(singleExercise: Exercise) {
         
-        singleExercise.setValue(exerciseName.text!, forKey: "name")
-        singleExercise.setValue(exerciseDetails.text!, forKey: "details")
+        singleExercise.name = exerciseName.text!
+        singleExercise.details = exerciseDetails.text!
+    }
+    
+    private func errorAlertMessage(errorDescription: String) {
+        
+        let alertController = UIAlertController(title: "Error", message:
+            errorDescription, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
 }
